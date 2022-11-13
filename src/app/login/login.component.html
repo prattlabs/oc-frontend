@@ -1,0 +1,21 @@
+<mat-card id="form" style="text-align: center;" class="center">
+    <mat-card-content>
+        <mat-card-title>
+            <mat-icon>account_circle</mat-icon>
+        </mat-card-title>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@onesource.com" required>
+            <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+            </button>
+          </mat-form-field>
+        <button mat-raised-button>Login</button>
+    </mat-card-content>
+</mat-card>
