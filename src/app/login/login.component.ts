@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl,FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +26,10 @@ export class LoginComponent {
     }
 
     return this.email.hasError('password') ? 'Password was incorrect' : '';
+  }
+
+  Submit() {
+    console.log("Submit");
   }
 
 }
