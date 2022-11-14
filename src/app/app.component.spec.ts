@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'os-frontend'`, () => {
+  it(`should have as title 'oc-frontend'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('os-frontend');
+    expect(app.title).toEqual('oc-frontend');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('os-frontend app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('oc-frontend app is running!');
   });
 });
