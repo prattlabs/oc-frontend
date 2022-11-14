@@ -1,24 +1,28 @@
 <mat-card id="form" style="text-align: center;">
     <mat-card-content>
-        <form class="my-form" (ngSubmit)="Submit()" #heroForm="ngForm">
+        <form class="my-form" [formGroup]="angForm" (ngSubmit)="Submit()">
             <mat-card-title>
                 <mat-icon>account_circle</mat-icon>
             </mat-card-title>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width:100%;" appearance="fill">
                 <mat-label>Enter your email</mat-label>
-                <input matInput placeholder="pat@onesource.com" required>
+                <input matInput placeholder="pat@onecause.com" [formControl]="email" required>
                 <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field style="width:100%;" appearance="fill">
                 <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'">
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+                <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-            </mat-form-field>
-            <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
-            <button mat-raised-button type="submit">Login</button>
+            </mat-form-field><br />
+            <button mat-raised-button [disabled]="email.invalid || password.invalid" type="submit">Login</button>
+            <mat-label>
+                <mat-error *ngIf="submitFailed">Something went wrong. Check the username and password and try again.
+                </mat-error>
+            </mat-label>
         </form>
     </mat-card-content>
 </mat-card>
